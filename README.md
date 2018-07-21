@@ -10,11 +10,20 @@ Example:
   
   JSON_Location:./responseJSON/Input.json
   Schema_Location:/Users/mindstix/Desktop/Out.json
-
-  { id: 'GlobalSuggestDelete',
-    title: 'Global Suggest',
-    version: '2.0',
-    data: [ 'User preference suggestion removed successfully' ] 
+  
+  {
+    "checked": false,
+    "dimensions": {
+      "width": 5,
+      "height": 10
+    },
+    "id": 1,
+    "name": "A green door",
+    "price": 12.5,
+    "tags": [
+      "home",
+      "green"
+    ]
   }
 
   {
