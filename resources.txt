@@ -1,2 +1,11 @@
 https://github.com/nijikokun/generate-schema
+
+https://www.journaldev.com/7821/node-fs-js-create-file-read-write
 http://stackabuse.com/reading-and-writing-json-files-with-node-js/
+
+https://medium.com/netscape/a-guide-to-create-a-nodejs-command-line-package-c2166ad0452e
+https://en.wikipedia.org/wiki/Shebang_%28Unix%29
+https://stackoverflow.com/questions/4351521/how-do-i-pass-command-line-arguments-to-a-node-js-program
+
+
+http://stackabuse.com/command-line-arguments-in-node-js/
