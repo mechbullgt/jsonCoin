@@ -1,0 +1,2 @@
+https://github.com/nijikokun/generate-schema
+http://stackabuse.com/reading-and-writing-json-files-with-node-js/

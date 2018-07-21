@@ -2,7 +2,7 @@
   "name": "jsonschema",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "schema.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -12,6 +12,9 @@
   },
   "author": "Maqbool Ansari",
   "license": "ISC",
+  "bin": {
+    "get-schema": "./schema.js"
+  },
   "bugs": {
     "url": "https://github.com/mechbullgt/jsonSchema/issues"
   },
