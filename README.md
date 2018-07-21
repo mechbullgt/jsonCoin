@@ -3,12 +3,12 @@ A node based web application to generate JSON schema (Draft-4) from any given JS
 
 
 Use:
-node schema.js <inputJSONLocation> <OutputSchemaLocation> 
+node schema.js inputJSONLocation OutputSchemaLocation
 
 Example: 
-  maqbool:jsonSchema maqbool$ node schema.js ./responseJSON/Input.json ~/Desktop/Out.json
+`<$ node schema.js ./responseJSON/Input.json ~/Desktop/Out.json>`
   
-  JSON_Location:./responseJSON/Input.json
+  JSON_Location:./responseJSON/Input.json <br />
   Schema_Location:/Users/mindstix/Desktop/Out.json
   
   {
@@ -60,6 +60,6 @@ Example:
         }
       }
     }
-  }
+  } <br />
+  <br />
 JSON Schema generated at: /Users/mindstix/Desktop/Out.json
-maqbool:jsonSchema maqbool$  
