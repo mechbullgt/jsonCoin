@@ -53,5 +53,4 @@ Example:
     }
   }
 JSON Schema generated at: /Users/mindstix/Desktop/Out.json
-
 maqbool:jsonSchema maqbool$  
