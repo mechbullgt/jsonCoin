@@ -1,0 +1,23 @@
+{
+  "name": "jsonschema",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mechbullgt/jsonSchema.git"
+  },
+  "author": "Maqbool Ansari",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mechbullgt/jsonSchema/issues"
+  },
+  "homepage": "https://github.com/mechbullgt/jsonSchema#readme",
+  "dependencies": {
+    "fs": "0.0.1-security",
+    "generate-schema": "^2.6.0"
+  }
+}

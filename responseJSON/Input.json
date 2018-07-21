@@ -1,0 +1,8 @@
+{
+    "id": "GlobalSuggestDelete",
+    "title": "Global Suggest",
+    "version": "2.0",
+    "data": [
+        "User preference suggestion removed successfully"
+    ]
+}
