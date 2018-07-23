@@ -1,5 +1,5 @@
 # jsonSchema
-A node based web application to generate JSON schema (Draft-4) from any given JSON file.
+A node based application to generate JSON schema (Draft-4) from any given JSON file.
 
 
 Use:
