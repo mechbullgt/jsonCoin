@@ -1,6 +1,27 @@
 <html>
-    <script type="text/javascript" src="../bundled/bundle.js"></script>
-    <div>
-        Hi! Please check the console.
+<script type="text/javascript" src="../bundled/bundle.js"></script>
+<div class="main">
+    <div class="iobox">
+        <textarea placeholder="Paste JSON response here!" rows="30" cols="50"></textarea>
     </div>
+    <div class="actionButton">
+        <button>Get JSONSchema</button>
+    </div>
+    <div class="iobox">
+        <textarea placeholder="JSON Schema will be generated here!" rows="30" cols="50"></textarea>
+    </div>
+</div>
+<style>
+.main{
+    display: -webkit-inline-flex
+}
+.iobox{
+    padding: 10px
+}
+.actionButton{
+    padding: 10px;
+    vertical-align: -webkit-baseline-middle;
+    margin-top: 50px;
+}
+</style>
 </html>
