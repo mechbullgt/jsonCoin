@@ -9,3 +9,6 @@ https://stackoverflow.com/questions/4351521/how-do-i-pass-command-line-arguments
 
 
 http://stackabuse.com/command-line-arguments-in-node-js/
+
+https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout/Aligning_Items_in_a_Flex_Container
+https://www.w3schools.com/tags/tag_textarea.asp
