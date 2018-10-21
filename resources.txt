@@ -12,3 +12,9 @@ http://stackabuse.com/command-line-arguments-in-node-js/
 
 https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout/Aligning_Items_in_a_Flex_Container
 https://www.w3schools.com/tags/tag_textarea.asp
+
+Fire jquery after the element is loaded.
+https://stackoverflow.com/questions/11130825/no-response-on-jquery-click
+
+A webpack function doesn't litter the global space and does needs to be make available globally
+https://stackoverflow.com/questions/35781579/basic-webpack-not-working-for-button-click-function-uncaught-reference-error

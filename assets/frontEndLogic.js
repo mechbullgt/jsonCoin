@@ -1,16 +1,27 @@
-const fileSystem = require('fs');
+// var fileSystem = require('fs');
+// console.log("Front End Logic Js");
 
-function getJSON() {
-    var jsonFromHTML = document.getElementById("inputBox").value;
-    var jsonFilePathFromHtml = document.getElementById('readFile').value;
-    console.log("JSON File Content" + jsonFromHTML);
-    console.log("JSON File's Path:" + jsonFilePathFromHtml);
-    document.getElementById('outputBox').innerHTML = jsonFilePathFromHtml;
-    return jsonFilePathFromHtml;
+// function readFileFromPath(path){
+//     let rawData = fileSystem.readFileSync(path);
+//     let theData = JSON.parse(rawData);
+//     console.log("JSON Data:"+theData);
+// }
+
+// window.readFileFromPath = readFileFromPath;
+
+function fetchJSONFile(path, callback) {
+    var httpRequest = new XMLHttpRequest();
+    httpRequest.onreadystatechange = function() {
+        if (httpRequest.readyState === 4) {
+            if (httpRequest.status === 200) {
+                var data = JSON.parse(httpRequest.responseText);
+                if (callback) callback(data);
+                console.log("Data:"+data);
+            }
+        }
+    };
+    httpRequest.open('GET', path);
+    httpRequest.send(); 
 }
 
-function readFileFromPath(path){
-    let rawData = fileSystem.readFileSync(path);
-    let theData = JSON.parse(rawData);
-    console.log("JSON Data:"+theData);
-}
+window.fetchJSONFile = fetchJSONFile;
