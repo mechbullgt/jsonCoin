@@ -1,0 +1,17 @@
+.main{
+    display: -webkit-inline-flex
+}
+.iobox{
+    padding: 10px
+}
+.actionButton{
+    padding: 10px;
+    vertical-align: -webkit-baseline-middle;
+    margin-top: 50px;
+}
+#readFile{
+    padding: 10px    
+}
+#inputArea{
+    padding: 10px
+}

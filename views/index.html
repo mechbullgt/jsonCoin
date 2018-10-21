@@ -1,33 +1,34 @@
 <html>
+
+<head>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script type="text/javascript" src="../bundled/bundle.js"></script>
-<script type="text/javascript">
-function getJSON(){
-    var jsonFromHTML = document.getElementById("inputBox").value;
-    console.log('From HTML:'+jsonFromHTML);
-}
-</script>
+<script language="javascript">
+    $(document).ready(function(){
+        $("#buttonForAction").click(function(){
+            var jsonFilePath = getJSON();
+            readFileFromPath(jsonFilePath);
+        });
+    });
+    </script>
 <div class="main">
     <div class="iobox">
-        <textarea placeholder="Paste JSON response here!" rows="30" cols="50" id='inputBox'></textarea>
+        <div>
+            Select you JSON file <input type="file" id="readFile">
+        </div>
+        <div style="padding-left:20px">OR</div>
+        <div id="inputArea">
+            <textarea placeholder="Paste JSON response here!" rows="30" cols="50" id='inputBox'></textarea>
+        </div>
     </div>
-    <div class="actionButton">
-        <button onclick="getJSON(); return false">Get JSONSchema</button>
+    <div class="actionButton" id="buttonForAction">
+        <button>Get JSONSchema</button>
     </div>
     <div class="iobox">
-        <textarea placeholder="JSON Schema will be generated here!" rows="30" cols="50"></textarea>
+        <textarea placeholder="JSON Schema will be generated here!" rows="30" cols="50" id="outputBox"></textarea>
     </div>
 </div>
-<style>
-.main{
-    display: -webkit-inline-flex
-}
-.iobox{
-    padding: 10px
-}
-.actionButton{
-    padding: 10px;
-    vertical-align: -webkit-baseline-middle;
-    margin-top: 50px;
-}
-</style>
+
 </html>
