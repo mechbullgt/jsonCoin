@@ -1,25 +1,41 @@
 <html>
-<input type="file" id="takeFileInput" name="files[]" multiple />
-<output id="list"></output>
-<output id="justList"></output>
 
-<script>
-    function handleFileSelect(evt) {
-        var files = evt.target.files; // FileList object
+<head>
+    <link rel="stylesheet" href="styles.css">
+</head>
 
-        // files is a FileList of File objects. List some properties.
-        var output = [];
-        for (var i = 0, f; f = files[i]; i++) {
-            output.push('<li><strong>', escape(f.name), '</strong> (', f.type || 'n/a', ') - ',
-                f.size, ' bytes, last modified: ',
-                f.lastModifiedDate ? f.lastModifiedDate.toLocaleDateString() : 'n/a',
-                '</li>');
-        }
-        document.getElementById('list').innerHTML = '<ul>' + output.join('') + '</ul>';
-        document.getElementById('justList').innerHTML='<ul>'+files.name+'</ul>';
-    }
-
-    document.getElementById('takeFileInput').addEventListener('change', handleFileSelect, false);
-</script>
+<body>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!-- <script type="text/javascript" src="../bundled/bundle.js"></script> -->
+    <div class="main">
+        <div class="iobox">
+            <div>
+                Select you JSON file <input type="file" id="readFile" onchange="openFile(event)">
+            </div>
+            <div style="padding-left:20px">OR</div>
+            <div id="inputArea">
+                <textarea placeholder="Paste JSON response here!" rows="30" cols="50" id='inputBox'></textarea>
+            </div>
+        </div>
+        <div class="actionButton" id="buttonForAction">
+            <button>Get JSONSchema</button>
+        </div>
+        <div class="iobox">
+            <textarea placeholder="JSON Schema will be generated here!" rows="30" cols="50" id="outputBox"></textarea>
+        </div>
+    </div>
+    <script language="javascript">
+        var openFile = function (event) {
+            var input = event.target;
+            var fileReader = new FileReader();
+            fileReader.onload = function () {
+                var text = fileReader.result;
+                document.getElementById('inputBox').innerText = text;
+                console.log("File Reader success!");
+            };
+            fileReader.readAsText(input.files[0]);
+        };
+    </script>
+</body>
 
 </html>
