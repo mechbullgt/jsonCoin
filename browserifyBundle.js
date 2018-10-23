@@ -1,16 +1,20 @@
 (function(){function r(e,n,t){function o(i,f){if(!n[i]){if(!e[i]){var c="function"==typeof require&&require;if(!f&&c)return c(i,!0);if(u)return u(i,!0);var a=new Error("Cannot find module '"+i+"'");throw a.code="MODULE_NOT_FOUND",a}var p=n[i]={exports:{}};e[i][0].call(p.exports,function(r){var n=e[i][1][r];return o(n||r)},p,p.exports,r,e,n,t)}return n[i].exports}for(var u="function"==typeof require&&require,i=0;i<t.length;i++)o(t[i]);return o}return r})()({1:[function(require,module,exports){
 "use strict";
-var fileSystem = require('generate-schema');
+var schemaGenerator = require('generate-schema');
 console.log("Front End Logic Js");
 
 function getJSONSchema(jsonInput){
     console.log("In getJSONSchma() from frontEndLogic");
     var inputJsonFile = JSON.parse(JSON.stringify(jsonInput));
     console.log("Data from Client:"+inputJsonFile);
-    var theText = '{"Success":"true"}';
-    var outputJsonFile = JSON.parse(JSON.stringify(theText));
-    console.log("Output File:"+outputJsonFile);
-    return outputJsonFile;
+    // var theText = '{"Success":"true"}';
+    // var outputJsonFile = JSON.parse(JSON.stringify(theText));
+    // console.log("Output File:"+outputJsonFile);
+
+    var outSchemaFile = schemaGenerator.json(JSON.parse(jsonInput));
+    var stringifySchema = JSON.stringify(outSchemaFile, null, 2);
+    console.log("Schema:"+stringifySchema);
+    return stringifySchema;
 }
 window.getJSONSchema = getJSONSchema;
 
