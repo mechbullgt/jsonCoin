@@ -6,16 +6,6 @@
 
 <body>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script>
-        function getMyJSON() {
-            var jsonFromHTML = document.getElementById("inputBox").value;
-            var jsonFilePathFromHtml = document.getElementById('readFile').value;
-            console.log("JSON File Content" + jsonFromHTML);
-            console.log("JSON File's Path:" + jsonFilePathFromHtml);
-            document.getElementById('outputBox').innerHTML = jsonFilePathFromHtml;
-            return jsonFilePathFromHtml;
-        }
-    </script>
     <div class="main">
         <div class="iobox">
             <div>
@@ -27,7 +17,7 @@
             </div>
         </div>
         <div class="actionButton" id="buttonForAction">
-            <button>Get JSONSchema</button>
+            <button onclick="generateSchema()">Get JSONSchema</button>
         </div>
         <div class="iobox">
             <textarea placeholder="JSON Schema will be generated here!" rows="30" cols="50" id="outputBox"></textarea>
@@ -37,19 +27,26 @@
         $(document).ready(function () {
             console.log("DOM loaded!");
         });
-        $("#buttonForAction").click(function () {
-            console.log("Success 1!");
-            var jsonFilePath = getMyJSON();
-            $.getJSON(jsonFilePath, function (data) {
-                console.log("Data:" + data);
-            })
-        });
+        // $("#buttonForAction").click(function () {
+        //     console.log("Calling external function");
+        //     var inputData = document.getElementById('inputBox').innerText;
+        //     getJSONSchema(inputData);
+        // });
+        function generateSchema() {
+            console.log("Calling external function FROM client.");
+            var inputData = document.getElementById('inputBox').value;
+            // console.log("InputData:"+inputData);
+            var outputData = getJSONSchema(inputData);
+            document.getElementById('outputBox').innerText=outputData;
+            console.log("You have made it!");
+        }
+
     </script>
     <script language="javascript">
-        var openFileEvent = function(event){
-            var inputFile= event.target;
+        var openFileEvent = function (event) {
+            var inputFile = event.target;
             var fileReader = new FileReader();
-            fileReader.onload = function(){
+            fileReader.onload = function () {
                 var fileContent = fileReader.result;
                 document.getElementById('inputBox').innerText = fileContent;
                 console.log("File content inserted to input text.")
@@ -57,7 +54,6 @@
             fileReader.readAsText(inputFile.files[0]);
         }
     </script>
-    <script src="../assets/frontEndLogic.js"></script>
     <script src="../browserifyBundle.js"></script>
 </body>
 

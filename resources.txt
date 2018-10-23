@@ -16,5 +16,28 @@ https://www.w3schools.com/tags/tag_textarea.asp
 Fire jquery after the element is loaded.
 https://stackoverflow.com/questions/11130825/no-response-on-jquery-click
 
+browserify
+https://scotch.io/tutorials/getting-started-with-browserify
+
+watchify
+https://www.npmjs.com/package/watchify
+
+runKit
+https://npm.runkit.com/generate-schema
+
+Unexpected end of file
+https://stackoverflow.com/questions/3594923/chrome-uncaught-syntaxerror-unexpected-end-of-input
+
+getText from tag_textarea
+document.getElementById("myTextarea").value
+https://www.w3schools.com/jsref/prop_textarea_value.asp
+
+
 A webpack function doesn't litter the global space and does needs to be make available globally
 https://stackoverflow.com/questions/35781579/basic-webpack-not-working-for-button-click-function-uncaught-reference-error
+
+Unable to locate function on client side require is not defined
+https://stackoverflow.com/questions/28696511/require-is-not-defined-error-with-browserify
+
+json parsing done on stringified json
+https://stackoverflow.com/questions/1086404/string-to-object-in-js
