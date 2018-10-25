@@ -55,4 +55,13 @@ https://stackoverflow.com/questions/2763006/make-the-current-git-branch-a-master
 copying content from myTextarea
 https://hackernoon.com/copying-text-to-clipboard-with-javascript-df4d4988697f
 https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_copy_clipboard
+<<<<<<< HEAD
 >>>>>>> prod
+=======
+
+mergeBranch to master with commit message
+https://stackoverflow.com/questions/19085807/please-enter-a-commit-message-to-explain-why-this-merge-is-necessary-especially
+
+rename branch 
+https://stackoverflow.com/questions/6591213/how-do-i-rename-a-local-git-branch
+>>>>>>> jsonSchemaFeature
