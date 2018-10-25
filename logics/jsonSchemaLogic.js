@@ -12,3 +12,12 @@ function getJSONSchema(jsonInput){
     return stringifySchema;
 }
 window.getJSONSchema = getJSONSchema;
+
+function copySchemaToClipboard(elementId){
+    console.log("Function to copy schema to the clipboard.");
+    const fromElement = document.getElementById(elementId);
+    fromElement.select();
+    document.execCommand('copy');
+    alert('Schema copied to clipboard');
+}
+window.copySchemaToClipboard = copySchemaToClipboard;

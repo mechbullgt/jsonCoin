@@ -20,7 +20,8 @@
             <button onclick="generateSchema()">Get JSONSchema</button>
         </div>
         <div class="iobox">
-            <textarea placeholder="JSON Schema will be generated here!" rows="30" cols="50" id="outputBox"></textarea>
+            <textarea placeholder="JSON Schema will be generated here!" rows="20" cols="50" id="outputBox"></textarea>
+            <button onclick="copySchemaToClipboard('outputBox')">Copy Schema to Clipboard!</button>
         </div>
     </div>
     <script language="javascript">
