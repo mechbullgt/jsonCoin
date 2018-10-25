@@ -48,5 +48,11 @@ https://runkit.com/mechbullgt/5bcf17a76e34030012c6eb4e
 pretty print the schema
 https://stackoverflow.com/questions/4810841/how-can-i-pretty-print-json-using-javascript
 
+<<<<<<< HEAD
 merge branch to master
 https://stackoverflow.com/questions/2763006/make-the-current-git-branch-a-master-branch
+=======
+copying content from myTextarea
+https://hackernoon.com/copying-text-to-clipboard-with-javascript-df4d4988697f
+https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_copy_clipboard
+>>>>>>> prod
