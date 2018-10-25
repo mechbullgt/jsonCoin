@@ -18,6 +18,6 @@ function copySchemaToClipboard(elementId){
     const fromElement = document.getElementById(elementId);
     fromElement.select();
     document.execCommand('copy');
-    alert('Schema copied to clipboard');
+    console.log('Schema copied to clipboard');
 }
 window.copySchemaToClipboard = copySchemaToClipboard;
