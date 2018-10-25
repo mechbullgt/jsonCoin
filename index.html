@@ -1,7 +1,7 @@
 <html>
 
 <head>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="./style/styles.css">
 </head>
 
 <body>
@@ -43,7 +43,7 @@
     <script language="javascript">
         $(document).ready(function () {
             console.log("DOM loaded!");
-            document.getElementById('inputBox').value=getDefaultText;
+            document.getElementById('inputBox').value=getDefaultText();
         });
         // $("#buttonForAction").click(function () {
         //     console.log("Calling external function");
