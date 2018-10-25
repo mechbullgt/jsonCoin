@@ -6,6 +6,22 @@
 
 <body>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script lang="javascript">
+        function getDefaultText() {
+            var placeholderText = {
+                "website": "json.co.in",
+                "purpose": "Provide JSON formatting tools",
+                "usersCount": 45,
+                "madeAttempts": ["contributeToOpenSource", "helpFellowLearners", "makeWorldABetterPlace"],
+                "buildInformation": {
+                    "version": "1.0.0",
+                    "releaseDate": "2018-11-08"
+                }
+            };
+            console.log("Text:"+JSON.stringify(placeholderText,null,2));
+            return JSON.stringify(placeholderText,null,2);
+        };
+    </script>
     <div class="main">
         <div class="iobox">
             <div>
@@ -13,7 +29,7 @@
             </div>
             <div style="padding-left:20px">OR</div>
             <div id="inputArea">
-                <textarea placeholder="Paste JSON response here!" rows="30" cols="50" id='inputBox'></textarea>
+                <textarea rows="30" cols="50" id='inputBox'></textarea>
             </div>
         </div>
         <div class="actionButton" id="buttonForAction">
@@ -27,6 +43,7 @@
     <script language="javascript">
         $(document).ready(function () {
             console.log("DOM loaded!");
+            document.getElementById('inputBox').value=getDefaultText;
         });
         // $("#buttonForAction").click(function () {
         //     console.log("Calling external function");
@@ -38,7 +55,7 @@
             var inputData = document.getElementById('inputBox').value;
             // console.log("InputData:"+inputData);
             var outputData = getJSONSchema(inputData);
-            document.getElementById('outputBox').innerText=outputData;
+            document.getElementById('outputBox').innerText = outputData;
             console.log("You have made it!");
         }
 
