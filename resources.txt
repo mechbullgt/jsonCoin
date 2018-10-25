@@ -47,3 +47,6 @@ https://runkit.com/mechbullgt/5bcf17a76e34030012c6eb4e
 
 pretty print the schema
 https://stackoverflow.com/questions/4810841/how-can-i-pretty-print-json-using-javascript
+
+merge branch to master
+https://stackoverflow.com/questions/2763006/make-the-current-git-branch-a-master-branch
