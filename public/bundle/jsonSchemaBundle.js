@@ -1,30 +1,4 @@
 (function(){function r(e,n,t){function o(i,f){if(!n[i]){if(!e[i]){var c="function"==typeof require&&require;if(!f&&c)return c(i,!0);if(u)return u(i,!0);var a=new Error("Cannot find module '"+i+"'");throw a.code="MODULE_NOT_FOUND",a}var p=n[i]={exports:{}};e[i][0].call(p.exports,function(r){var n=e[i][1][r];return o(n||r)},p,p.exports,r,e,n,t)}return n[i].exports}for(var u="function"==typeof require&&require,i=0;i<t.length;i++)o(t[i]);return o}return r})()({1:[function(require,module,exports){
-"use strict";
-var schemaGenerator = require('generate-schema');
-console.log("Front End Logic Js");
-
-function getJSONSchema(jsonInput){
-    console.log("In getJSONSchma() from frontEndLogic");
-    var inputJsonFile = JSON.parse(JSON.stringify(jsonInput));
-    console.log("Data:"+jsonInput);
-    console.log("Data from Client:"+inputJsonFile);
-    var outSchemaFile = schemaGenerator.json(JSON.parse(jsonInput));
-    console.log(outSchemaFile);
-    var stringifySchema = JSON.stringify(outSchemaFile, null, 2);
-    console.log("Schema:"+stringifySchema);
-    return stringifySchema;
-}
-window.getJSONSchema = getJSONSchema;
-
-function copySchemaToClipboard(elementId){
-    console.log("Function to copy schema to the clipboard.");
-    const fromElement = document.getElementById(elementId);
-    fromElement.select();
-    document.execCommand('copy');
-    console.log('Schema copied to clipboard');
-}
-window.copySchemaToClipboard = copySchemaToClipboard;
-},{"generate-schema":2}],2:[function(require,module,exports){
 exports.generic = require('./schemas/generic')
 exports.mongoose = require('./schemas/mongoose')
 exports.bigquery = require('./schemas/bigquery')
@@ -32,7 +6,7 @@ exports.mysql = require('./schemas/mysql')
 exports.json = require('./schemas/json')
 exports.clickhouse = require('./schemas/clickhouse')
 
-},{"./schemas/bigquery":3,"./schemas/clickhouse":4,"./schemas/generic":5,"./schemas/json":6,"./schemas/mongoose":7,"./schemas/mysql":8}],3:[function(require,module,exports){
+},{"./schemas/bigquery":2,"./schemas/clickhouse":3,"./schemas/generic":4,"./schemas/json":5,"./schemas/mongoose":6,"./schemas/mysql":7}],2:[function(require,module,exports){
 var utils = require('../utils')
 
 function getPropertyMode (value) {
@@ -80,7 +54,7 @@ module.exports = function Process (data) {
   return processFields(data)
 }
 
-},{"../utils":9}],4:[function(require,module,exports){
+},{"../utils":8}],3:[function(require,module,exports){
 // Modules
 var Type = require('type-of-is')
 var Utils = require('../utils')
@@ -241,7 +215,7 @@ module.exports = function Process (tableName, object, dateField) {
   }, dateField).join('')
 }
 
-},{"../utils":9,"type-of-is":10}],5:[function(require,module,exports){
+},{"../utils":8,"type-of-is":9}],4:[function(require,module,exports){
 // Modules
 var Type = require('type-of-is')
 var Utils = require('../utils')
@@ -273,7 +247,7 @@ module.exports = function Process (object, output) {
 
   return output
 }
-},{"../utils":9,"type-of-is":10}],6:[function(require,module,exports){
+},{"../utils":8,"type-of-is":9}],5:[function(require,module,exports){
 // Modules
 var Type = require('type-of-is')
 
@@ -506,7 +480,7 @@ module.exports = function Process (title, object) {
   return output
 }
 
-},{"type-of-is":10}],7:[function(require,module,exports){
+},{"type-of-is":9}],6:[function(require,module,exports){
 (function (Buffer){
 // Modules
 var Type = require('type-of-is')
@@ -602,7 +576,7 @@ module.exports = function Process (object, output) {
   return output
 }
 }).call(this,require("buffer").Buffer)
-},{"../utils":9,"buffer":12,"type-of-is":10}],8:[function(require,module,exports){
+},{"../utils":8,"buffer":12,"type-of-is":9}],7:[function(require,module,exports){
 // Modules
 var Type = require('type-of-is')
 var Utils = require('../utils')
@@ -769,7 +743,7 @@ module.exports = function Process (tableName, object) {
   }).join('\n')
 }
 
-},{"../utils":9,"type-of-is":10}],9:[function(require,module,exports){
+},{"../utils":8,"type-of-is":9}],8:[function(require,module,exports){
 var DATE_REGEXP = /\d{4}-\d{2}-\d{2}/
 
 exports.isNumber = function (value) {
@@ -792,7 +766,7 @@ exports.arrayLastItem = function (arr) {
   return arr[arr.length - 1]
 }
 
-},{}],10:[function(require,module,exports){
+},{}],9:[function(require,module,exports){
 (function (factory) {
   if (typeof exports == 'object') {
     module.exports = factory();
@@ -902,7 +876,33 @@ exports.arrayLastItem = function (arr) {
 
 }));
 
-},{}],11:[function(require,module,exports){
+},{}],10:[function(require,module,exports){
+"use strict";
+var schemaGenerator = require('generate-schema');
+console.log("Front End Logic Js");
+
+function getJSONSchema(jsonInput){
+    console.log("In getJSONSchma() from frontEndLogic");
+    var inputJsonFile = JSON.parse(JSON.stringify(jsonInput));
+    console.log("Data:"+jsonInput);
+    console.log("Data from Client:"+inputJsonFile);
+    var outSchemaFile = schemaGenerator.json(JSON.parse(jsonInput));
+    console.log(outSchemaFile);
+    var stringifySchema = JSON.stringify(outSchemaFile, null, 2);
+    console.log("Schema:"+stringifySchema);
+    return stringifySchema;
+}
+window.getJSONSchema = getJSONSchema;
+
+function copySchemaToClipboard(elementId){
+    console.log("Function to copy schema to the clipboard.");
+    const fromElement = document.getElementById(elementId);
+    fromElement.select();
+    document.execCommand('copy');
+    console.log('Schema copied to clipboard');
+}
+window.copySchemaToClipboard = copySchemaToClipboard;
+},{"generate-schema":1}],11:[function(require,module,exports){
 'use strict'
 
 exports.byteLength = byteLength
@@ -2920,4 +2920,4 @@ exports.write = function (buffer, value, offset, isLE, mLen, nBytes) {
   buffer[offset + i - d] |= s * 128
 }
 
-},{}]},{},[1]);
+},{}]},{},[10]);
