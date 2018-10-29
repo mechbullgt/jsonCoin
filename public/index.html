@@ -45,8 +45,11 @@
                     </div>
                     <div style="padding-bottom: 15px;text-align:center"><span class="text-info">OR</span></div>
                     <div id="inputArea">
-                        <textarea class="form-control" rows="15" id='inputBox'></textarea>
-                        <span class="help-block">Enter the JSON response in the above box.</span>
+                        <textarea class="form-control" rows="14" id='inputBox'></textarea>
+                        <div style="margin-top:10px">
+                            <button type="button" class="btn btn-primary btn-sm" onclick="javascript:clearInputText()">Clear Text</button>
+                            <span class="help-block">Go ahead ! Clear text & Enter the JSON response in the above box.</span>        
+                        </div>
                     </div>
                 </div>
             </div>
@@ -89,6 +92,9 @@
             var outputData = getJSONSchema(inputData);
             document.getElementById('outputBox').innerText = outputData;
             console.log("You have made it!");
+        }
+        function clearInputText() {
+        document.getElementById("inputBox").value = "";
         }
 
     </script>
