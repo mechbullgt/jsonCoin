@@ -1,12 +1,18 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
+
 <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="/public/css/style.css" rel="stylesheet" type="text/css">
-    <link rel="shortcut icon" type='image/x-icon' href="./assets/favicon.ico"/>
+    <link rel="shortcut icon" type='image/x-icon' href="./assets/favicon.ico" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <title>JsonCOIN</title>
 </head>
 
 <body>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script lang="javascript">
         function getDefaultText() {
             var placeholderText = {
@@ -19,32 +25,48 @@
                     "releaseDate": "2018-11-08"
                 }
             };
-            console.log("Text:"+JSON.stringify(placeholderText,null,2));
-            return JSON.stringify(placeholderText,null,2);
+            console.log("Text:" + JSON.stringify(placeholderText, null, 2));
+            return JSON.stringify(placeholderText, null, 2);
         };
     </script>
-    <div class="main">
-        <div class="iobox">
-            <div>
-                Select you JSON file <input type="file" id="readFile" onchange="openFileEvent(event)">
-            </div>
-            <div style="padding-left:20px">OR</div>
-            <div id="inputArea">
-                <textarea rows="30" cols="50" id='inputBox'></textarea>
-            </div>
+    <div class="container">
+        <div class="page-header">
+                <h1 class="text-primary"><abbr title="JSON (JavaScript Object Notation) is a lightweight data-interchange format. It is easy for humans to read and write. It is easy for machines to parse and generate. It is based on a subset of the JavaScript Programming Language, Standard ECMA-262 3rd Edition - December 1999.">JSON</abbr><small>.co.in</small></h1>
+                <p class="text-info">JSONcoin is a client side tool to generate JSON schema (type draft-04) using JSON
+                    objects.</p>
         </div>
-        <div class="actionButton" id="buttonForAction">
-            <button onclick="generateSchema()">Get JSONSchema</button>
-        </div>
-        <div class="iobox">
-            <textarea placeholder="JSON Schema will be generated here!" rows="20" cols="50" id="outputBox"></textarea>
-            <button onclick="copySchemaToClipboard('outputBox')">Copy Schema to Clipboard!</button>
+        <div class="row">
+            <div class="col-sm-4">
+                <div class="iobox">
+                    <div>
+                        Select you JSON file <input type="file" id="readFile" onchange="openFileEvent(event)">
+                    </div>
+                    <div style="padding-left:20px">OR</div>
+                    <div id="inputArea">
+                        <textarea rows="25" cols="50" id='inputBox'></textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                    <div class="actionButton" id="buttonForAction">
+                        <button onclick="generateSchema()">Get JSONSchema</button>
+                    </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="iobox">
+                    <textarea placeholder="JSON Schema will be generated here!" rows="20" cols="50" id="outputBox"></textarea>
+                    <div>
+                        <button onclick="copySchemaToClipboard('outputBox')">Copy Schema to Clipboard!</button>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
+
     <script language="javascript">
         $(document).ready(function () {
             console.log("DOM loaded!");
-            document.getElementById('inputBox').value=getDefaultText();
+            document.getElementById('inputBox').value = getDefaultText();
         });
         // $("#buttonForAction").click(function () {
         //     console.log("Calling external function");
@@ -67,7 +89,7 @@
             var fileReader = new FileReader();
             fileReader.onload = function () {
                 var fileContent = fileReader.result;
-                document.getElementById('inputBox').innerText = fileContent;
+                document.getElementById('inputBox').value = fileContent;
                 console.log("File content inserted to input text.")
             };
             fileReader.readAsText(inputFile.files[0]);
