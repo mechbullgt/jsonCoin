@@ -1,18 +1,18 @@
-/* .main{
-    display: -webkit-inline-flex
-} */
-.iobox{
-    padding: 10px
+.headBottom{
+    border-bottom: 1px solid #cccccc
+}
+.bodyTop{
+    margin-top: 20px;
 }
 .actionButton{
     margin-top: 150px;
-    margin-left: 150px;
+    margin-left: 75px;
  }
 #readFile{
-    padding: 10px    
+    padding: 0px    
 }
 #inputArea{
-    padding: 10px
+    padding: 0px
 }
 abbr[title] {
     border-bottom: none !important;

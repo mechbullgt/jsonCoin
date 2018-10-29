@@ -30,33 +30,40 @@
         };
     </script>
     <div class="container">
-        <div class="page-header">
-                <h1 class="text-primary"><abbr title="JSON (JavaScript Object Notation) is a lightweight data-interchange format. It is easy for humans to read and write. It is easy for machines to parse and generate. It is based on a subset of the JavaScript Programming Language, Standard ECMA-262 3rd Edition - December 1999.">JSON</abbr><small>.co.in</small></h1>
-                <p class="text-info">JSONcoin is a client side tool to generate JSON schema (type draft-04) using JSON
-                    objects.</p>
+        <div class="headBottom media-heading">
+            <h1 class="text-primary"><abbr title="JSON (JavaScript Object Notation) is a lightweight data-interchange format. It is easy for humans to read and write. It is easy for machines to parse and generate. It is based on a subset of the JavaScript Programming Language, Standard ECMA-262 3rd Edition - December 1999.">JSON</abbr><small>.co.in</small></h1>
+            <p class="text-info">JSONcoin is a client side tool to generate JSON schema (type draft-04) using JSON
+                objects.</p>
         </div>
-        <div class="row">
+        <div class="bodyTop row">
             <div class="col-sm-4">
                 <div class="iobox">
-                    <div>
-                        Select you JSON file <input type="file" id="readFile" onchange="openFileEvent(event)">
+                    <div class="well well-sm">
+                        <p>
+                        <span class="help-block">Select your JSON file </span><input type="file" id="readFile" onchange="openFileEvent(event)">
+                        </p>
                     </div>
-                    <div style="padding-left:20px">OR</div>
+                    <div style="padding-bottom: 15px;text-align:center"><span class="text-info">OR</span></div>
                     <div id="inputArea">
-                        <textarea rows="25" cols="50" id='inputBox'></textarea>
+                        <textarea class="form-control" rows="15" id='inputBox'></textarea>
+                        <span class="help-block">Enter the JSON response in the above box.</span>
                     </div>
                 </div>
             </div>
             <div class="col-sm-4">
-                    <div class="actionButton" id="buttonForAction">
-                        <button onclick="generateSchema()">Get JSONSchema</button>
+                <div class="actionButton" id="buttonForAction">
+                    <div class="btn-group-vertical">
+                        <button type="button" data-toggle="tooltip" title="This click will change your life!" class="btn btn-primary btn-lg" onclick="generateSchema()">Get JSON Schema <span class="glyphicon glyphicon-flash"></span></button>
+                        <button type="button" style="border:none"></button>
+                        <button type="button" data-toggle="tooltip" title="Feature Coming Soon!" class="btn btn-primary btn-lg disabled">Pretty Format JSON <span class="glyphicon glyphicon-eye-open"></span></button> 
                     </div>
+                </div>
             </div>
             <div class="col-sm-4">
                 <div class="iobox">
-                    <textarea placeholder="JSON Schema will be generated here!" rows="20" cols="50" id="outputBox"></textarea>
-                    <div>
-                        <button onclick="copySchemaToClipboard('outputBox')">Copy Schema to Clipboard!</button>
+                    <textarea class="form-control" placeholder="JSON Schema will be generated here!" rows="20" id="outputBox"></textarea>
+                    <div style="margin-top: 10px">
+                        <button class="btn btn-primary btn-md" data-toggle="tooltip" title="Click to see MAGIC!" onclick="copySchemaToClipboard('outputBox')">Copy Schema to Clipboard!</button>
                     </div>
                 </div>
             </div>
