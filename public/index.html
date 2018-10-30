@@ -40,15 +40,17 @@
                 <div class="iobox">
                     <div class="well well-sm">
                         <p>
-                        <span class="help-block">Select your JSON file </span><input type="file" id="readFile" onchange="openFileEvent(event)">
+                            <span class="help-block">Select your JSON file </span><input type="file" id="readFile"
+                                onchange="openFileEvent(event)">
                         </p>
                     </div>
                     <div style="padding-bottom: 15px;text-align:center"><span class="text-info">OR</span></div>
                     <div id="inputArea">
                         <textarea class="form-control" rows="14" id='inputBox'></textarea>
                         <div style="margin-top:10px">
-                            <button type="button" class="btn btn-primary btn-sm" onclick="javascript:clearInputText()">Clear Text</button>
-                            <span class="help-block">Go ahead ! Clear text & Enter the JSON response in the above box.</span>        
+                            <button type="button" class="btn btn-primary btn-sm" onclick="javascript:clearInputText()">Clear
+                                Text</button>
+                            <span class="help-block">Go ahead ! Clear text & Enter the JSON response in the above box.</span>
                         </div>
                     </div>
                 </div>
@@ -56,9 +58,11 @@
             <div class="col-sm-4">
                 <div class="actionButton" id="buttonForAction">
                     <div class="btn-group-vertical">
-                        <button type="button" data-toggle="tooltip" title="This click will change your life!" class="btn btn-primary btn-lg" onclick="generateSchema()">Get JSON Schema <span class="glyphicon glyphicon-flash"></span></button>
+                        <button type="button" data-toggle="tooltip" title="This click will change your life!" class="btn btn-primary btn-lg"
+                            onclick="generateSchema()">Get JSON Schema <span class="glyphicon glyphicon-flash"></span></button>
                         <button type="button" style="border:none"></button>
-                        <button type="button" data-toggle="tooltip" title="Feature Coming Soon!" class="btn btn-primary btn-lg disabled">Pretty Format JSON <span class="glyphicon glyphicon-eye-open"></span></button> 
+                        <button type="button" data-toggle="tooltip" title="Feature Coming Soon!" class="btn btn-primary btn-lg disabled">Pretty
+                            Format JSON <span class="glyphicon glyphicon-eye-open"></span></button>
                     </div>
                 </div>
             </div>
@@ -66,7 +70,8 @@
                 <div class="iobox">
                     <textarea class="form-control" placeholder="JSON Schema will be generated here!" rows="20" id="outputBox"></textarea>
                     <div style="margin-top: 10px">
-                        <button class="btn btn-primary btn-md" data-toggle="tooltip" title="Click to see MAGIC!" onclick="copySchemaToClipboard('outputBox')">Copy Schema to Clipboard!</button>
+                        <button class="btn btn-primary btn-md" data-toggle="tooltip" title="Click to see MAGIC!"
+                            onclick="copySchemaToClipboard('outputBox')">Copy Schema to Clipboard!</button>
                     </div>
                 </div>
             </div>
@@ -89,12 +94,29 @@
             console.log("Calling external function FROM client.");
             var inputData = document.getElementById('inputBox').value;
             // console.log("InputData:"+inputData);
+            var isValid = isValidJSONString(inputData);
+            if(!isValid)
+            {
+                alert("Please check the JSON input is not valid!")
+            }
+            else
+            {
             var outputData = getJSONSchema(inputData);
             document.getElementById('outputBox').innerText = outputData;
             console.log("You have made it!");
+            }
+            
         }
         function clearInputText() {
-        document.getElementById("inputBox").value = "";
+            document.getElementById("inputBox").value = "";
+        }
+        function isValidJSONString(input) {
+            try {
+                JSON.parse(input);
+            } catch (e) {
+                return false;
+            }
+            return true;
         }
 
     </script>
