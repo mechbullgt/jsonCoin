@@ -1,3 +1,79 @@
+::-webkit-input-placeholder {
+    text-align: center;
+ }
+ 
+ :-moz-placeholder { /* Firefox 18- */
+    text-align: center;  
+ }
+ 
+ ::-moz-placeholder {  /* Firefox 19+ */
+    text-align: center;  
+ }
+ 
+ :-ms-input-placeholder {  
+    text-align: center; 
+ }
+
+.myrow {
+    margin-right: -10px;
+    margin-left: -10px;
+}
+
+.mycontainer{
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 0px;
+}
+
+.disabledButton:hover{
+    cursor:not-allowed;
+}
+
+.button {
+    padding: 15px 25px;
+    font-size: 20px;
+    text-align: center;
+    cursor: pointer;
+    outline: none;
+    color: #fff;
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 9px #999;
+  }
+  
+  .button:hover {
+      background-color:darkslategrey}
+  
+  .button:active {
+    background-color: #3e8e41;
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+  }
+
+.btn-group, .my-btn-group-vertical{
+    display: block;
+}
+
+.schemaButton {
+    background-color: dodgerblue;
+    border-radius: 8px;
+}
+
+.prettyButton {
+    background-color:violet;
+    border-radius: 8px;
+}
+
+.compareButton {
+    background-color: steelblue;
+    border-radius: 8px;
+}
+
+.jsonpathButton {
+    background-color: tomato;
+    border-radius: 8px;
+}
+
 .headBottom{
     border-bottom: 1px solid #cccccc
 }
@@ -5,8 +81,8 @@
     margin-top: 20px;
 }
 .actionButton{
-    margin-top: 150px;
-    margin-left: 75px;
+    margin-top: 0px;
+    margin-left: 0;
  }
 #readFile{
     padding: 0px    
@@ -23,7 +99,7 @@ abbr[title] {
     left: 0;
     bottom: 0;
     width: 100%;
-    height: 20px;
+    height: 23px;
     background-color: #cccccc;
     color:palevioletred;
     text-align: center;

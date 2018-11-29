@@ -37,17 +37,15 @@
             return JSON.stringify(placeholderText, null, 2);
         };
     </script>
-    <div class="container">
-        <div class="headBottom media-heading">
+    <div class="mycontainer">
+        <div class="headBottom media-heading my-media-heading">
             <h1 class="text-primary"><abbr title="JSON (JavaScript Object Notation) is a lightweight data-interchange format. It is easy for humans to read and write. It is easy for machines to parse and generate. It is based on a subset of the JavaScript Programming Language, Standard ECMA-262 3rd Edition - December 1999.">JSON</abbr><small>.co.in</small></h1>
-            <p class="text-info">JSONcoin is a client side tool to generate JSON schema (type draft-04) using JSON
-                objects.</p>
         </div>
-        <div class="bodyTop row">
-            <div class="col-sm-4">
+        <div class="bodyTop myrow">
+            <div class="col-lg-4">
                 <div class="iobox">
                     <div id="inputArea">
-                        <textarea class="form-control" rows="14" id='inputBox'></textarea>
+                        <textarea class="form-control" rows="16" id='inputBox'></textarea>
                         <div style="margin-top:10px">
                             <button type="button" class="btn btn-primary btn-sm" onclick="javascript:clearInputText()">Clear
                                 Text</button>
@@ -55,27 +53,34 @@
                         </div>
                     </div>
                 </div>
-                <div style="padding-bottom: 15px;text-align:center"><span class="text-info">OR</span></div>
+                <div style="padding-bottom: 10px;text-align:center"><span class="text-info">OR</span></div>
                 <div class="well well-sm">
                     <p>
                         <span class="help-block">Select your JSON file </span><input type="file" id="readFile" onchange="openFileEvent(event)">
                     </p>
                 </div>
             </div>
-            <div class="col-sm-4">
+            <div class="col-lg-2">
                 <div class="actionButton" id="buttonForAction">
-                    <div class="btn-group-vertical">
-                        <button type="button" data-toggle="tooltip" title="This click will change your life!" class="btn btn-primary btn-lg"
+                    <div class="my-btn-group-vertical">
+                        <button type="button" data-toggle="tooltip" title="You just a click away to see something pretty!" class="button prettyButton"
+                            onclick="generatePrettyJSON()">Pretty
+                            Format JSON <span class="glyphicon glyphicon-eye-open"></span></button>
+                        <button type="button" style="border:none"></button>
+                        <button type="button" data-toggle="tooltip" title="Click to get this JSON object's schema!" class="button schemaButton"
                             onclick="generateSchema()">Get JSON Schema <span class="glyphicon glyphicon-flash"></span></button>
                         <button type="button" style="border:none"></button>
-                        <button type="button" data-toggle="tooltip" title="Feature Coming Soon!" class="btn btn-primary btn-lg" onclick="generatePrettyJSON()">Pretty
-                            Format JSON <span class="glyphicon glyphicon-eye-open"></span></button>
+                        <button type="button" data-toggle="tooltip" title="Feature Coming Soon" class="button compareButton disabledButton"
+                            onclick="">Compare JSON <span class="glyphicon glyphicon-circle-arrow-left"></span><span class="glyphicon glyphicon-circle-arrow-right"></span></button>
+                        <button type="button" style="border:none"></button>
+                        <button type="button" data-toggle="tooltip" title="Feature Coming Soon" class="button jsonpathButton disabledButton"
+                            onclick="">Use JsonPath Expressions <span class="glyphicon glyphicon-wrench"></span></button>
                     </div>
                 </div>
             </div>
-            <div class="col-sm-4">
+            <div class="col-lg-6">
                 <div class="iobox">
-                    <textarea class="form-control" placeholder="Hi! Generated JSON Schema will appear here!" rows="20"
+                    <textarea class="form-control" placeholder="Expect the result here!" rows="24"
                         id="outputBox"></textarea>
                     <div style="margin-top: 10px">
                         <button class="btn btn-primary btn-md" data-toggle="tooltip" title="Click to see MAGIC!"
@@ -111,7 +116,7 @@
         function generatePrettyJSON() {
             console.log("Calling external function FROM client.");
             var inputData = document.getElementById('inputBox').value;
-            console.log("InputData:"+inputData);
+            console.log("InputData:" + inputData);
             var isValid = isValidJSONString(inputData);
             if (!isValid) {
                 alert("Please check the JSON input is not valid!")
