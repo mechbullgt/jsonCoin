@@ -15,6 +15,7 @@
     <link href="./style.css" rel="stylesheet" type="text/css">
     <link rel="shortcut icon" type='image/x-icon' href="./favicon.ico" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.2/ace.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <title>JsonCOIN</title>
@@ -63,15 +64,16 @@
             <div class="col-lg-2">
                 <div class="actionButton" id="buttonForAction">
                     <div class="my-btn-group-vertical">
-                        <button type="button" data-toggle="tooltip" title="You just a click away to see something pretty!" class="button prettyButton"
-                            onclick="generatePrettyJSON()">Pretty
+                        <button type="button" data-toggle="tooltip" title="You just a click away to see something pretty!"
+                            class="button prettyButton" onclick="generatePrettyJSON()">Pretty
                             Format JSON <span class="glyphicon glyphicon-eye-open"></span></button>
                         <button type="button" style="border:none"></button>
-                        <button type="button" data-toggle="tooltip" title="Click to get this JSON object's schema!" class="button schemaButton"
-                            onclick="generateSchema()">Get JSON Schema <span class="glyphicon glyphicon-flash"></span></button>
+                        <button type="button" data-toggle="tooltip" title="Click to get this JSON object's schema!"
+                            class="button schemaButton" onclick="generateSchema()">Get JSON Schema <span class="glyphicon glyphicon-flash"></span></button>
                         <button type="button" style="border:none"></button>
                         <button type="button" data-toggle="tooltip" title="Feature Coming Soon" class="button compareButton disabledButton"
-                            onclick="">Compare JSON <span class="glyphicon glyphicon-circle-arrow-left"></span><span class="glyphicon glyphicon-circle-arrow-right"></span></button>
+                            onclick="">Compare JSON <span class="glyphicon glyphicon-circle-arrow-left"></span><span
+                                class="glyphicon glyphicon-circle-arrow-right"></span></button>
                         <button type="button" style="border:none"></button>
                         <button type="button" data-toggle="tooltip" title="Feature Coming Soon" class="button jsonpathButton disabledButton"
                             onclick="">Use JsonPath Expressions <span class="glyphicon glyphicon-wrench"></span></button>
@@ -79,14 +81,21 @@
                 </div>
             </div>
             <div class="col-lg-6">
-                <div class="iobox">
-                    <textarea class="form-control" placeholder="Expect the result here!" rows="24"
-                        id="outputBox"></textarea>
-                    <div style="margin-top: 10px">
-                        <button class="btn btn-primary btn-md" data-toggle="tooltip" title="Click to see MAGIC!"
-                            onclick="copySchemaToClipboard('outputBox')">Copy Schema to Clipboard!</button>
-                    </div>
+                <!-- <div class="iobox" > -->
+                <div id="outputEditor">
+                    var x = 100;
+                    var text = "hello, world";
+
+                    console.log(x);
+                    alert(text);
                 </div>
+                <!-- <textarea class="form-control" placeholder="Expect the result here!" rows="24"
+                        id="outputBox"></textarea> -->
+                <div style="margin-top: 10px">
+                    <button class="btn btn-primary btn-md" data-toggle="tooltip" title="Click to see MAGIC!" onclick="copySchemaToClipboard('outputBox')">Copy
+                        Schema to Clipboard!</button>
+                </div>
+                <!-- </div> -->
             </div>
         </div>
     </div>
@@ -94,22 +103,44 @@
         <p>Made with <span class="glyphicon glyphicon-heart-empty"></span>.js by <span><a href="https://github.com/mechbullgt">mechbullgt</a></span></p>
     </div>
     <script language="javascript">
+    function loadEditor(){
+        var editor = ace.edit("outputEditor");
+            editor.setTheme("ace/theme/monokai");
+            editor.getSession().setMode("ace/mode/json");
+            editor.setOptions({
+                useSoftTabs: true,
+                showGutter: true,
+                behavioursEnabled: true,
+                autoScrollEditorIntoView: true,
+                copyWithEmptySelection: true,
+                highlightActiveline: true,
+                highlightSelectedWord: true,
+                readOnly: true,
+                fontSize: 12,
+                wrap: false,
+                hScrollBarAlwaysVisible: true,
+                vScrollBarAlwaysVisible: true,
+                highlightGutterLine: true
+            });
+    }
+    </script>
+    <script language="javascript">
         $(document).ready(function () {
             console.log("DOM loaded!");
             document.getElementById('inputBox').value = getDefaultText();
+            loadEditor();
         });
 
         function generateSchema() {
             console.log("Calling external function FROM client.");
             var inputData = document.getElementById('inputBox').value;
-            // console.log("InputData:"+inputData);
             var isValid = isValidJSONString(inputData);
             if (!isValid) {
                 alert("Please check the JSON input is not valid!")
             }
             else {
                 var outputData = getJSONSchema(inputData);
-                document.getElementById('outputBox').innerText = outputData;
+                document.getElementById('outputEditor').innerText = outputData;
                 console.log("You have made it!");
             }
         }
@@ -123,7 +154,7 @@
             }
             else {
                 var outputData = getPrettyJSON(inputData);
-                document.getElementById('outputBox').innerText = outputData;
+                document.getElementById('outputEditor').innerText=outputData;
                 console.log("You have made it!");
             }
         }

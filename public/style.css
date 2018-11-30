@@ -1,3 +1,11 @@
+#outputEditor{
+    height: 500px;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+
 ::-webkit-input-placeholder {
     text-align: center;
  }
@@ -30,14 +38,14 @@
 }
 
 .button {
-    padding: 15px 25px;
-    font-size: 20px;
+    padding: 20px 25px;
+    font-size: 18px;
     text-align: center;
     cursor: pointer;
     outline: none;
     color: #fff;
     border: none;
-    border-radius: 15px;
+    border-radius: 25px;
     box-shadow: 0 9px #999;
   }
   
