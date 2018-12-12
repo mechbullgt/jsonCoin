@@ -44,15 +44,11 @@
         </div>
         <div class="bodyTop myrow">
             <div class="col-lg-4">
-                <div class="iobox">
-                    <div id="inputArea">
-                        <textarea class="form-control" rows="16" id='inputBox'></textarea>
-                        <div style="margin-top:10px">
-                            <button type="button" class="btn btn-primary btn-sm" onclick="javascript:clearInputText()">Clear
-                                Text</button>
-                            <span class="help-block">Go ahead ! Clear text & Enter the JSON response in the above box.</span>
-                        </div>
-                    </div>
+                <div id="inputEditor"></div>
+                <div style="margin-top:10px">
+                    <button type="button" class="btn btn-primary btn-sm" onclick="javascript:clearInputText()">Clear
+                        Text</button>
+                    <span class="help-block">Go ahead ! Clear text & Enter the JSON response in the above box.</span>
                 </div>
                 <div style="padding-bottom: 10px;text-align:center"><span class="text-info">OR</span></div>
                 <div class="well well-sm">
@@ -61,51 +57,45 @@
                     </p>
                 </div>
             </div>
-            <div class="col-lg-2">
-                <div class="actionButton" id="buttonForAction">
-                    <div class="my-btn-group-vertical">
-                        <button type="button" data-toggle="tooltip" title="You just a click away to see something pretty!"
-                            class="button prettyButton" onclick="generatePrettyJSON()">Pretty
-                            Format JSON <span class="glyphicon glyphicon-eye-open"></span></button>
-                        <button type="button" style="border:none"></button>
-                        <button type="button" data-toggle="tooltip" title="Click to get this JSON object's schema!"
-                            class="button schemaButton" onclick="generateSchema()">Get JSON Schema <span class="glyphicon glyphicon-flash"></span></button>
-                        <button type="button" style="border:none"></button>
-                        <button type="button" data-toggle="tooltip" title="Feature Coming Soon" class="button compareButton disabledButton"
-                            onclick="">Compare JSON <span class="glyphicon glyphicon-circle-arrow-left"></span><span
-                                class="glyphicon glyphicon-circle-arrow-right"></span></button>
-                        <button type="button" style="border:none"></button>
-                        <button type="button" data-toggle="tooltip" title="Feature Coming Soon" class="button jsonpathButton disabledButton"
-                            onclick="">Use JsonPath Expressions <span class="glyphicon glyphicon-wrench"></span></button>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-6">
-                <!-- <div class="iobox" > -->
-                <div id="outputEditor">
-                    var x = 100;
-                    var text = "hello, world";
 
-                    console.log(x);
-                    alert(text);
+        </div>
+        <div class="col-lg-2">
+            <div class="actionButton" id="buttonForAction">
+                <div class="my-btn-group-vertical">
+                    <button type="button" data-toggle="tooltip" title="You just a click away to see something pretty!"
+                        class="button prettyButton" onclick="generatePrettyJSON()">Pretty
+                        Format JSON <span class="glyphicon glyphicon-eye-open"></span></button>
+                    <button type="button" style="border:none"></button>
+                    <button type="button" data-toggle="tooltip" title="Click to get this JSON object's schema!" class="button schemaButton"
+                        onclick="generateSchema()">Get JSON Schema <span class="glyphicon glyphicon-flash"></span></button>
+                    <button type="button" style="border:none"></button>
+                    <button type="button" data-toggle="tooltip" title="Feature Coming Soon" class="button compareButton disabledButton"
+                        onclick="">Compare JSON <span class="glyphicon glyphicon-circle-arrow-left"></span><span class="glyphicon glyphicon-circle-arrow-right"></span></button>
+                    <button type="button" style="border:none"></button>
+                    <button type="button" data-toggle="tooltip" title="Feature Coming Soon" class="button jsonpathButton disabledButton"
+                        onclick="">Use JsonPath Expressions <span class="glyphicon glyphicon-wrench"></span></button>
                 </div>
-                <!-- <textarea class="form-control" placeholder="Expect the result here!" rows="24"
-                        id="outputBox"></textarea> -->
-                <div style="margin-top: 10px">
-                    <button class="btn btn-primary btn-md" data-toggle="tooltip" title="Click to see MAGIC!" onclick="copySchemaToClipboard('outputBox')">Copy
-                        Schema to Clipboard!</button>
-                </div>
-                <!-- </div> -->
             </div>
         </div>
+        <div class="col-lg-6">
+            <div id="outputEditor">
+            </div>
+            <div style="margin-top: 10px">
+                <button class="btn btn-primary btn-md" data-toggle="tooltip" title="Click to see MAGIC!" onclick="copySchemaToClipboard('outputBox')">Copy
+                    Schema to Clipboard!</button>
+            </div>
+            <!-- </div> -->
+        </div>
+    </div>
     </div>
     <div class="footer">
         <p>Made with <span class="glyphicon glyphicon-heart-empty"></span>.js by <span><a href="https://github.com/mechbullgt">mechbullgt</a></span></p>
     </div>
     <script language="javascript">
-    function loadEditor(){
-        var editor = ace.edit("outputEditor");
-            editor.setTheme("ace/theme/monokai");
+        var editorTheme = "ace/theme/vibrant_ink";
+        function loadOutputEditor() {
+            var editor = ace.edit("outputEditor");
+            editor.setTheme(editorTheme);
             editor.getSession().setMode("ace/mode/json");
             editor.setOptions({
                 useSoftTabs: true,
@@ -122,31 +112,66 @@
                 vScrollBarAlwaysVisible: true,
                 highlightGutterLine: true
             });
-    }
+        }
+        function loadInputEditor() {
+            var editor = ace.edit("inputEditor");
+            editor.setTheme(editorTheme);
+            editor.getSession().setMode("ace/mode/json");
+            editor.setOptions({
+                useSoftTabs: true,
+                showGutter: true,
+                behavioursEnabled: true,
+                autoScrollEditorIntoView: true,
+                copyWithEmptySelection: true,
+                highlightActiveline: true,
+                highlightSelectedWord: true,
+                readOnly: true,
+                fontSize: 12,
+                wrap: false,
+                hScrollBarAlwaysVisible: true,
+                vScrollBarAlwaysVisible: true,
+                highlightGutterLine: true
+            });
+        }
+        function setValueInputEditor(str) {
+            var editor = ace.edit("inputEditor");
+            editor.setValue(str, 1);
+        }
+        function setValueOutputEditor(str) {
+            console.log("Setting Output Editor paceholder value");
+            var editor = ace.edit("outputEditor");
+            editor.setValue(str, 1);
+        }
     </script>
     <script language="javascript">
         $(document).ready(function () {
             console.log("DOM loaded!");
-            document.getElementById('inputBox').value = getDefaultText();
-            loadEditor();
+            loadInputEditor();
+            setValueInputEditor(getDefaultText());
+            loadOutputEditor();
+            setValueOutputEditor(getDefaultText());
         });
 
         function generateSchema() {
             console.log("Calling external function FROM client.");
-            var inputData = document.getElementById('inputBox').value;
+            var editor = ace.edit("inputEditor");
+            var inputData = editor.getValue();
             var isValid = isValidJSONString(inputData);
             if (!isValid) {
                 alert("Please check the JSON input is not valid!")
             }
             else {
                 var outputData = getJSONSchema(inputData);
-                document.getElementById('outputEditor').innerText = outputData;
+                var editor = ace.edit("outputEditor");
+                editor.setValue(outputData, 1);
+                editor.clearSelection();
                 console.log("You have made it!");
             }
         }
         function generatePrettyJSON() {
             console.log("Calling external function FROM client.");
-            var inputData = document.getElementById('inputBox').value;
+            var editor = ace.edit("inputEditor");
+            var inputData = editor.getValue();
             console.log("InputData:" + inputData);
             var isValid = isValidJSONString(inputData);
             if (!isValid) {
@@ -154,7 +179,9 @@
             }
             else {
                 var outputData = getPrettyJSON(inputData);
-                document.getElementById('outputEditor').innerText=outputData;
+                var editor = ace.edit("outputEditor");
+                editor.setValue(outputData, 1);
+                editor.clearSelection();
                 console.log("You have made it!");
             }
         }
@@ -177,7 +204,9 @@
             var fileReader = new FileReader();
             fileReader.onload = function () {
                 var fileContent = fileReader.result;
-                document.getElementById('inputBox').value = fileContent;
+                var editor = ace.edit("inputEditor");
+                editor.setValue(fileContent,1);
+                // document.getElementById('inputBox').value = fileContent;
                 console.log("File content inserted to input text.")
             };
             fileReader.readAsText(inputFile.files[0]);

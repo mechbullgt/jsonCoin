@@ -1,3 +1,11 @@
+html{
+    background-color:white;
+}
+
+#inputEditor{
+    height: 300px;
+}
+
 #outputEditor{
     height: 500px;
     top: 0;
@@ -28,8 +36,8 @@
 }
 
 .mycontainer{
-    padding-left: 20px;
-    padding-right: 20px;
+    padding-left: 15px;
+    padding-right: 15px;
     padding-top: 0px;
 }
 
@@ -38,8 +46,8 @@
 }
 
 .button {
-    padding: 20px 25px;
-    font-size: 18px;
+    padding: 10px 30px;
+    font-size: 14px;
     text-align: center;
     cursor: pointer;
     outline: none;
