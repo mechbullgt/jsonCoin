@@ -12,12 +12,12 @@
     </script>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="./style.css" rel="stylesheet" type="text/css">
     <link rel="shortcut icon" type='image/x-icon' href="./favicon.ico" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.2/ace.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link href="./style.css" rel="stylesheet" type="text/css">
     <title>JsonCOIN</title>
 </head>
 
@@ -43,16 +43,15 @@
             <h1 class="text-primary"><abbr title="JSON (JavaScript Object Notation) is a lightweight data-interchange format. It is easy for humans to read and write. It is easy for machines to parse and generate. It is based on a subset of the JavaScript Programming Language, Standard ECMA-262 3rd Edition - December 1999.">JSON</abbr><small>.co.in</small></h1>
         </div>
         <div class="bodyTop myrow">
-            <div class="col-lg-4">
+        </div>
+        <div class="col-lg-5" style="align-content: center">
                 <div id="inputEditor"></div>
                 <div style="margin-top:10px">
                     <button type="button" class="btn btn-primary btn-sm" onclick="javascript:clearInputText()">Clear
                         Text</button>
                 </div>
             </div>
-
-        </div>
-        <div class="col-lg-2">
+        <div class="col-lg-1 singleColumn">
             <div class="actionButton" id="buttonForAction">
                 <div class="my-btn-group-vertical">
                     <button type="button" data-toggle="tooltip" title="You just a click away to see something pretty!"
@@ -66,7 +65,7 @@
                         onclick="">Compare JSON <span class="glyphicon glyphicon-circle-arrow-left"></span><span class="glyphicon glyphicon-circle-arrow-right"></span></button>
                     <button type="button" style="border:none"></button>
                     <button type="button" data-toggle="tooltip" title="Feature Coming Soon" class="button jsonpathButton disabledButton"
-                        onclick="">Use JsonPath Expressions <span class="glyphicon glyphicon-wrench"></span></button>
+                        onclick="">JsonPath Expressions <span class="glyphicon glyphicon-wrench"></span></button>
                     <button type="button" style="border:none"></button>
                 </div>
                 <!-- <div class="well well-sm">
