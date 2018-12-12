@@ -48,13 +48,6 @@
                 <div style="margin-top:10px">
                     <button type="button" class="btn btn-primary btn-sm" onclick="javascript:clearInputText()">Clear
                         Text</button>
-                    <span class="help-block">Go ahead ! Clear text & Enter the JSON response in the above box.</span>
-                </div>
-                <div style="padding-bottom: 10px;text-align:center"><span class="text-info">OR</span></div>
-                <div class="well well-sm">
-                    <p>
-                        <span class="help-block">Select your JSON file </span><input type="file" id="readFile" onchange="openFileEvent(event)">
-                    </p>
                 </div>
             </div>
 
@@ -74,7 +67,14 @@
                     <button type="button" style="border:none"></button>
                     <button type="button" data-toggle="tooltip" title="Feature Coming Soon" class="button jsonpathButton disabledButton"
                         onclick="">Use JsonPath Expressions <span class="glyphicon glyphicon-wrench"></span></button>
+                    <button type="button" style="border:none"></button>
                 </div>
+                <!-- <div class="well well-sm">
+                    <p>
+                        <input style="display: none" type="file" id="readFile" onchange="openFileEvent(event)">
+                        <label for="readFile">Select your JSON file</label>
+                    </p>
+                </div> -->
             </div>
         </div>
         <div class="col-lg-6">
@@ -205,7 +205,7 @@
             fileReader.onload = function () {
                 var fileContent = fileReader.result;
                 var editor = ace.edit("inputEditor");
-                editor.setValue(fileContent,1);
+                editor.setValue(fileContent, 1);
                 // document.getElementById('inputBox').value = fileContent;
                 console.log("File content inserted to input text.")
             };
