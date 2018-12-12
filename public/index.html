@@ -45,12 +45,12 @@
         <div class="bodyTop myrow">
         </div>
         <div class="col-lg-5" style="align-content: center">
-                <div id="inputEditor"></div>
-                <div style="margin-top:10px">
-                    <button type="button" class="btn btn-primary btn-sm" onclick="javascript:clearInputText()">Clear
-                        Text</button>
-                </div>
+            <div id="inputEditor"></div>
+            <div style="margin-top:10px">
+                <button type="button" class="btn btn-primary btn-sm" onclick="javascript:clearInputText()">Clear
+                    Text</button>
             </div>
+        </div>
         <div class="col-lg-1 singleColumn">
             <div class="actionButton" id="buttonForAction">
                 <div class="my-btn-group-vertical">
@@ -80,8 +80,8 @@
             <div id="outputEditor">
             </div>
             <div style="margin-top: 10px">
-                <button class="btn btn-primary btn-md" data-toggle="tooltip" title="Click to see MAGIC!" onclick="copySchemaToClipboard('outputBox')">Copy
-                    Schema to Clipboard!</button>
+                <button class="btn btn-primary btn-md" data-toggle="tooltip" name="copyButton" title="Click to see MAGIC!" onclick="copyToClipboard()">Copy
+                    to Clipboard!</button>
             </div>
             <!-- </div> -->
         </div>
@@ -92,26 +92,6 @@
     </div>
     <script language="javascript">
         var editorTheme = "ace/theme/vibrant_ink";
-        function loadOutputEditor() {
-            var editor = ace.edit("outputEditor");
-            editor.setTheme(editorTheme);
-            editor.getSession().setMode("ace/mode/json");
-            editor.setOptions({
-                useSoftTabs: true,
-                showGutter: true,
-                behavioursEnabled: true,
-                autoScrollEditorIntoView: true,
-                copyWithEmptySelection: true,
-                highlightActiveline: true,
-                highlightSelectedWord: true,
-                readOnly: true,
-                fontSize: 12,
-                wrap: false,
-                hScrollBarAlwaysVisible: true,
-                vScrollBarAlwaysVisible: true,
-                highlightGutterLine: true
-            });
-        }
         function loadInputEditor() {
             var editor = ace.edit("inputEditor");
             editor.setTheme(editorTheme);
@@ -124,7 +104,27 @@
                 copyWithEmptySelection: true,
                 highlightActiveline: true,
                 highlightSelectedWord: true,
-                readOnly: true,
+                readOnly: false,
+                fontSize: 12,
+                wrap: false,
+                hScrollBarAlwaysVisible: true,
+                vScrollBarAlwaysVisible: true,
+                highlightGutterLine: true
+            });
+        }
+        function loadOutputEditor() {
+            var editor = ace.edit("outputEditor");
+            editor.setTheme(editorTheme);
+            editor.getSession().setMode("ace/mode/json");
+            editor.setOptions({
+                useSoftTabs: true,
+                showGutter: true,
+                behavioursEnabled: true,
+                autoScrollEditorIntoView: true,
+                copyWithEmptySelection: true,
+                highlightActiveline: true,
+                highlightSelectedWord: true,
+                readOnly: false,
                 fontSize: 12,
                 wrap: false,
                 hScrollBarAlwaysVisible: true,
@@ -185,8 +185,39 @@
             }
         }
         function clearInputText() {
-            document.getElementById("inputBox").value = "";
+            var editor = ace.edit('inputEditor');
+            editor.setValue("");
         }
+        function copyToClipboard() {
+            var editor = ace.edit('outputEditor');
+            $("button[name='copyButton']").click(function () {
+                var txt = editor.getValue();
+                if (!txt || txt == '') {
+                    console.log("Txt"+txt);
+                    return;
+                }
+                console.log("Txt"+txt);
+                copyTextToClipboard(txt);
+            });
+        }
+        function copyTextToClipboard(text) {
+                var textArea = document.createElement("textarea");
+                textArea.style.position = 'fixed';
+                textArea.style.top = 0;
+                textArea.style.left = 0;
+                textArea.style.width = '2em';
+                textArea.style.height = '2em';
+                textArea.style.padding = 0;
+                textArea.style.border = 'none';
+                textArea.style.outline = 'none';
+                textArea.style.boxShadow = 'none';
+                textArea.style.background = 'transparent';
+                textArea.value = text;
+                document.body.appendChild(textArea);
+                textArea.select();
+                document.execCommand('copy');
+                document.body.removeChild(textArea);
+            }
         function isValidJSONString(input) {
             try {
                 JSON.parse(input);
