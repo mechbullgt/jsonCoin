@@ -61,11 +61,11 @@
                     <button type="button" data-toggle="tooltip" title="Click to get this JSON object's schema!" class="button schemaButton"
                         onclick="generateSchema()">Get JSON Schema <span class="glyphicon glyphicon-flash"></span></button>
                     <button type="button" style="border:none"></button>
-                    <button type="button" data-toggle="tooltip" title="Feature Coming Soon" class="button compareButton disabledButton"
-                        onclick="">Json2Table<span class="glyphicon glyphicon-th"></span></span></button>
+                    <button type="button" data-toggle="tooltip" title="Click to check the JSON Table" class="button compareButton"
+                        onclick="generateTable()">JSON to Table <span class="glyphicon glyphicon-th"></span></span></button>
                     <button type="button" style="border:none"></button>
                     <button type="button" data-toggle="tooltip" title="Feature Coming Soon" class="button jsonpathButton disabledButton"
-                        onclick="">Compare JSON<span class="glyphicon glyphicon-wrench"></span></button>
+                        onclick="">Compare JSON <span class="glyphicon glyphicon-wrench"></span></button>
                     <button type="button" style="border:none"></button>
                     <!-- <button type="button" data-toggle="tooltip" title="Feature Coming Soon" class="button jsonpathButton disabledButton"
                         onclick="">JsonPath Expressions <span class="glyphicon glyphicon-wrench"></span></button> -->
@@ -89,6 +89,7 @@
             <!-- </div> -->
         </div>
     </div>
+    <div class="tableContainer" id="tableContainer"></div>
     </div>
     <div class="footer">
         <p>Made with <span class="glyphicon glyphicon-heart-empty"></span>.js by <span><a href="https://github.com/mechbullgt">mechbullgt</a></span></p>
@@ -153,6 +154,20 @@
             loadOutputEditor();
             setValueOutputEditor(getDefaultText());
         });
+
+        //Method to generate the table from the JSON input
+        function generateTable(){
+            document.getElementById("tableContainer").innerHTML=`<table border=1 cellspacing=0 cellpadding=0 class="my-table">
+    <thead>
+        <tr> <th>a</th> <th>b</th> <th>c</th> </tr>
+    </thead>
+    </tbody>
+        <tr> <td>1</td> <td>2</td> <td> </td> </tr>
+        <tr> <td>2</td> <td>1</td> <td> </td> </tr>
+        <tr> <td>4</td> <td> </td> <td>5</td> </tr>
+    </tbody>
+</table>`
+        }
 
         function generateSchema() {
             console.log("Calling external function FROM client.");
