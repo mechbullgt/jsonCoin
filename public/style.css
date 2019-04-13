@@ -1,6 +1,10 @@
+#tableHeader{
+    margin-left: 25px;
+}
+
 table {
     border-collapse: collapse;
-    width: 100%;
+    width: 100ch;
     border: 1px solid black;
   }
   
@@ -157,4 +161,5 @@ abbr[title] {
     background-color: #cccccc;
     color:palevioletred;
     text-align: center;
+    z-index: 10;
  }
