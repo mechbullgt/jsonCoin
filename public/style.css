@@ -1,9 +1,11 @@
 table {
     border-collapse: collapse;
     width: 100%;
+    border: 1px solid black;
   }
   
   th, td {
+    border: 1px solid black;
     text-align: left;
     padding: 8px;
   }

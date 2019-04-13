@@ -17,6 +17,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.2/ace.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="../logics/jsonTableLogic.js"></script>
     <link href="./style.css" rel="stylesheet" type="text/css">
     <title>JsonCOIN</title>
 </head>
@@ -62,7 +63,7 @@
                         onclick="generateSchema()">Get JSON Schema <span class="glyphicon glyphicon-flash"></span></button>
                     <button type="button" style="border:none"></button>
                     <button type="button" data-toggle="tooltip" title="Click to check the JSON Table" class="button compareButton"
-                        onclick="generateTable()">JSON to Table <span class="glyphicon glyphicon-th"></span></span></button>
+                        onclick="generateJSONTable()">JSON to Table <span class="glyphicon glyphicon-th"></span></span></button>
                     <button type="button" style="border:none"></button>
                     <button type="button" data-toggle="tooltip" title="Feature Coming Soon" class="button jsonpathButton disabledButton"
                         onclick="">Compare JSON <span class="glyphicon glyphicon-wrench"></span></button>
@@ -88,6 +89,8 @@
             </div>
             <!-- </div> -->
         </div>
+        <br>
+        <hr>
     </div>
     <div class="tableContainer" id="tableContainer"></div>
     </div>
@@ -156,17 +159,29 @@
         });
 
         //Method to generate the table from the JSON input
-        function generateTable(){
-            document.getElementById("tableContainer").innerHTML=`<table border=1 cellspacing=0 cellpadding=0 class="my-table">
-    <thead>
-        <tr> <th>a</th> <th>b</th> <th>c</th> </tr>
-    </thead>
-    </tbody>
-        <tr> <td>1</td> <td>2</td> <td> </td> </tr>
-        <tr> <td>2</td> <td>1</td> <td> </td> </tr>
-        <tr> <td>4</td> <td> </td> <td>5</td> </tr>
-    </tbody>
-</table>`
+        function generateJSONTable(){
+            console.log('Generating table from client.');
+            var editor = ace.edit("inputEditor");
+            var inputData = editor.getValue();
+            var isValid = isValidJSONString(inputData);
+            if (!isValid) {
+                alert("Please check the JSON input is not valid!")
+            }
+            else {
+                var outputData = generateTable("#tableContainer",inputData);
+                // document.getElementById("tableContainer").innerHTML=outputData;
+                console.log("You have made it!");
+            }
+//             document.getElementById("tableContainer").innerHTML=`<table border=1 cellspacing=0 cellpadding=0 class="my-table">
+//     <thead>
+//         <tr> <th>a</th> <th>b</th> <th>c</th> </tr>
+//     </thead>
+//     </tbody>
+//         <tr> <td>1</td> <td>2</td> <td> </td> </tr>
+//         <tr> <td>2</td> <td>1</td> <td> </td> </tr>
+//         <tr> <td>4</td> <td> </td> <td>5</td> </tr>
+//     </tbody>
+// </table>`
         }
 
         function generateSchema() {
