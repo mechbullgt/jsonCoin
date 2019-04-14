@@ -1,4 +1,11 @@
+.headerMessageClass{
+    color:green;
+    padding: 10px;
+}
+
 #tableHeader{
+    text-align: center;
+    height: auto;
     margin-left: 25px;
 }
 

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-128350621-1"></script>
@@ -61,20 +62,20 @@
                     <button type="button" data-toggle="tooltip" title="You just a click away to see something pretty!"
                         class="button prettyButton" onclick="generatePrettyJSON()">Pretty
                         Format JSON <span class="glyphicon glyphicon-eye-open"></span></button>
-                        <button type="button" style="border:none;visibility: hidden"></button>
-                        <button type="button" data-toggle="tooltip" title="Click to get this JSON object's schema!"
+                    <button type="button" style="border:none;visibility: hidden"></button>
+                    <button type="button" data-toggle="tooltip" title="Click to get this JSON object's schema!"
                         class="button schemaButton" onclick="generateSchema()">Get JSON Schema <span
                             class="glyphicon glyphicon-flash"></span></button>
                     <button type="button" style="border:none;visibility: hidden"></button>
                     <button type="button" data-toggle="tooltip" title="Click to check the JSON Table"
                         class="button compareButton" onclick="generateJSONTable()">JSON to Table <span
                             class="glyphicon glyphicon-th"></span></span></button>
-                            <button type="button" style="border:none;visibility: hidden"></button>
-                            <button type="button" data-toggle="tooltip" title="Feature Coming Soon"
+                    <button type="button" style="border:none;visibility: hidden"></button>
+                    <button type="button" data-toggle="tooltip" title="Feature Coming Soon"
                         class="button jsonpathButton disabledButton" onclick="">Compare JSON <span
                             class="glyphicon glyphicon-wrench"></span></button>
-                            <button type="button" style="border:none;visibility: hidden"></button>
-                            <!-- <button type="button" data-toggle="tooltip" title="Feature Coming Soon" class="button jsonpathButton disabledButton"
+                    <button type="button" style="border:none;visibility: hidden"></button>
+                    <!-- <button type="button" data-toggle="tooltip" title="Feature Coming Soon" class="button jsonpathButton disabledButton"
                         onclick="">JsonPath Expressions <span class="glyphicon glyphicon-wrench"></span></button> -->
                 </div>
                 <!-- <div class="well well-sm">
@@ -162,7 +163,24 @@
             setValueInputEditor(getDefaultText());
             loadOutputEditor();
             setValueOutputEditor(getDefaultText());
+            generateDefaultTable();
         });
+
+        function generateDefaultTable() {
+            console.log('Generating table from client.');
+            var editor = ace.edit("inputEditor");
+            var inputData = editor.getValue();
+            var isValid = isValidJSONString(inputData);
+            if (!isValid) {
+                alert("Please check the JSON input is not valid!")
+            }
+            else {
+                generateDefaultMessageForTable("#tableHeader");
+                var outputData = generateTable("#tableContainer", inputData);
+                // document.getElementById("tableContainer").innerHTML=outputData;
+                console.log("You have made it!");
+            }
+        }
 
         //Method to generate the table from the JSON input
         function generateJSONTable() {
@@ -182,10 +200,38 @@
         }
         // Method to generate the header for the JSON Table
         function generateHeaderMessageForTable(destinationSelector) {
-            var el = document.createElement("h3");
-            var elText = document.createTextNode("Success! Below is the Tabular Representation for your JSON object!")
-            el.appendChild(elText);
-            document.getElementById(destinationSelector.slice(1)).appendChild(el);
+            var checkIfClassExists = document.getElementsByClassName('headerMessageClass');
+            if (checkIfClassExists.length > 0) {
+                console.log("Header Message Exists");
+            } else {
+                var deleteDefaultElement = document.getElementsByClassName("headerDefaultMessageClass");
+                while (deleteDefaultElement.length > 0) {
+                    deleteDefaultElement[0].parentNode.removeChild(deleteDefaultElement[0]);
+                }
+                var el = document.createElement("h4");
+                el.className = "headerMessageClass";
+                var elText = document.createTextNode("Success! Below is the Tabular Representation for your JSON object!")
+                el.appendChild(elText);
+                document.getElementById(destinationSelector.slice(1)).appendChild(el);
+            }
+        }
+
+        // Method to generate the header for the JSON Table
+        function generateDefaultMessageForTable(destinationSelector) {
+            var checkIfClassExists = document.getElementsByClassName('headerDefaultMessageClass');
+            if (checkIfClassExists.length > 0) {
+                console.log("Header Message Exists");
+            } else {
+                var el = document.createElement("h4");
+                el.className = "headerDefaultMessageClass";
+                var elText = document.createTextNode("Below is the Tabular Representation for the sample JSON object");
+                el.appendChild(elText);
+                var br = document.createElement("br");
+                el.appendChild(br);
+                var elText2 = document.createTextNode("(To view tabular representation for your JSON reponse, paste it in the left editor and click on 'JSON to Table')");
+                el.appendChild(elText2);
+                document.getElementById(destinationSelector.slice(1)).appendChild(el);
+            }
         }
 
         function generateSchema() {
