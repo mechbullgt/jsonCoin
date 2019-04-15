@@ -73,7 +73,7 @@
                             class="glyphicon glyphicon-flash"></span></button>
                     <button type="button" style="border:none;visibility: hidden"></button>
                     <button type="button" data-toggle="tooltip" title="Click to check the JSON Table"
-                        class="button compareButton" onclick="generateJSONTable()">JSON to Table <span
+                        class="button compareButton" id="tableButton" onclick="generateJSONTable()">JSON to Table <span
                             class="glyphicon glyphicon-th"></span></span></button>
                     <button type="button" style="border:none;visibility: hidden"></button>
                     <button type="button" data-toggle="tooltip" title="Feature Coming Soon"
@@ -199,6 +199,11 @@
             else {
                 generateHeaderMessageForTable("#tableHeader");
                 var outputData = generateTable("#tableContainer", inputData);
+                $("#tableButton").click(function () {
+                    $('html, body').animate({
+                        scrollTop: $("#tableContainer").offset().top
+                    }, 1000);
+                });
                 // document.getElementById("tableContainer").innerHTML=outputData;
                 console.log("You have made it!");
             }
