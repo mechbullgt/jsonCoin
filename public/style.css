@@ -1,3 +1,14 @@
+#editor-statusBar {
+    margin: 0;
+    padding: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 20px;
+    background-color: rgb(245, 245, 245);
+    color: gray;
+}
+
 .headerMessageClass{
     color:green;
     padding: 10px;

@@ -23,6 +23,7 @@
     <link rel="shortcut icon" type='image/x-icon' href="./favicon.ico" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.2/ace.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.3/ext-statusbar.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <link href="./style.css" rel="stylesheet" type="text/css">
@@ -59,6 +60,7 @@
         </div>
         <div class="col-lg-5" style="align-content: center">
             <div id="inputEditor"></div>
+            <div id="editor-statusBar"></div>
             <div style="margin-top:10px">
                 <button type="button" class="btn btn-primary btn-sm" onclick="javascript:clearInputText()">Clear
                     Text</button>
@@ -95,8 +97,8 @@
             </div>
         </div>
         <div class="col-lg-6">
-            <div id="outputEditor">
-            </div>
+            <div id="outputEditor"></div>
+            <div id="editor-statusBar"></div>
             <div style="margin: 10px 0 15px 0">
                 <button class="btn btn-primary btn-md" data-toggle="tooltip" name="copyButton"
                     title="Click to see MAGIC!" onclick="copyToClipboard()">Copy
@@ -116,6 +118,9 @@
         var editorTheme = "ace/theme/vibrant_ink";
         function loadInputEditor() {
             var editor = ace.edit("inputEditor");
+            // Adding a status bar for the editor
+            var StatusBar = ace.require("ace/ext/statusbar").StatusBar;
+            var statusBar = new StatusBar(editor, document.getElementById("editor-statusBar"));
             editor.setTheme(editorTheme);
             editor.getSession().setMode("ace/mode/json");
             editor.setOptions({
@@ -136,6 +141,9 @@
         }
         function loadOutputEditor() {
             var editor = ace.edit("outputEditor");
+            // Adding a status bar for the editor
+            var StatusBar = ace.require("ace/ext/statusbar").StatusBar;
+            var statusBar = new StatusBar(editor, document.getElementById("editor-statusBar"));
             editor.setTheme(editorTheme);
             editor.getSession().setMode("ace/mode/json");
             editor.setOptions({
