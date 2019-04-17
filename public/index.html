@@ -60,7 +60,7 @@
         </div>
         <div class="col-lg-5" style="align-content: center">
             <div id="inputEditor"></div>
-            <div id="editor-statusBar"></div>
+            <div id="editor-statusBar" class="statusbar"></div>
             <div style="margin-top:10px">
                 <button type="button" class="btn btn-primary btn-sm" onclick="javascript:clearInputText()">Clear
                     Text</button>
@@ -98,7 +98,7 @@
         </div>
         <div class="col-lg-6">
             <div id="outputEditor"></div>
-            <div id="editor-statusBar"></div>
+            <div id="outPutEditor-statusBar" class="statusbar"></div>
             <div style="margin: 10px 0 15px 0">
                 <button class="btn btn-primary btn-md" data-toggle="tooltip" name="copyButton"
                     title="Click to see MAGIC!" onclick="copyToClipboard()">Copy
@@ -143,7 +143,7 @@
             var editor = ace.edit("outputEditor");
             // Adding a status bar for the editor
             var StatusBar = ace.require("ace/ext/statusbar").StatusBar;
-            var statusBar = new StatusBar(editor, document.getElementById("editor-statusBar"));
+            var outPutStatusBar = new StatusBar(editor, document.getElementById("outPutEditor-statusBar"));
             editor.setTheme(editorTheme);
             editor.getSession().setMode("ace/mode/json");
             editor.setOptions({
@@ -182,6 +182,7 @@
             generateDefaultTable();
         });
 
+        // Method to generate the default table on load
         function generateDefaultTable() {
             console.log('Generating table from client.');
             var editor = ace.edit("inputEditor");
