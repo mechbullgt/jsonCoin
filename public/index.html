@@ -172,6 +172,15 @@
             loadOutputEditor();
             setValueOutputEditor(getDefaultText());
             generateDefaultTable();
+
+            console.log("Adding scroll listener");
+
+            $("#tableButton").click(function () {
+                    console.log("Calling click handler for #tableButton");
+                    $('html, body').animate({
+                        scrollTop: $("#tableContainer").offset().top
+                    }, 1000);
+            });
         });
 
         function generateDefaultTable() {
@@ -202,13 +211,8 @@
             else {
                 generateHeaderMessageForTable("#tableHeader");
                 var outputData = generateTable("#tableContainer", inputData);
-                $("#tableButton").click(function () {
-                    $('html, body').animate({
-                        scrollTop: $("#tableContainer").offset().top
-                    }, 1000);
-                });
+
                 // document.getElementById("tableContainer").innerHTML=outputData;
-                console.log("You have made it!");
             }
         }
         // Method to generate the header for the JSON Table
