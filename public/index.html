@@ -6,7 +6,10 @@
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-128350621-1"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
-        function gtag() { dataLayer.push(arguments); }
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
         gtag('js', new Date());
         gtag('config', 'UA-128350621-1');
     </script>
@@ -114,6 +117,7 @@
     </div>
     <script language="javascript">
         var editorTheme = "ace/theme/vibrant_ink";
+
         function loadInputEditor() {
             var editor = ace.edit("inputEditor");
             editor.setTheme(editorTheme);
@@ -134,6 +138,7 @@
                 highlightGutterLine: true
             });
         }
+
         function loadOutputEditor() {
             var editor = ace.edit("outputEditor");
             editor.setTheme(editorTheme);
@@ -154,10 +159,12 @@
                 highlightGutterLine: true
             });
         }
+
         function setValueInputEditor(str) {
             var editor = ace.edit("inputEditor");
             editor.setValue(str, 1);
         }
+
         function setValueOutputEditor(str) {
             console.log("Setting Output Editor paceholder value");
             var editor = ace.edit("outputEditor");
@@ -172,26 +179,16 @@
             loadOutputEditor();
             setValueOutputEditor(getDefaultText());
             generateDefaultTable();
-
-            console.log("Adding scroll listener");
-
-            $("#tableButton").click(function () {
-                    console.log("Calling click handler for #tableButton");
-                    $('html, body').animate({
-                        scrollTop: $("#tableContainer").offset().top
-                    }, 1000);
-            });
         });
 
         function generateDefaultTable() {
-            console.log('Generating table from client.');
+            console.log('Generating default table.');
             var editor = ace.edit("inputEditor");
             var inputData = editor.getValue();
             var isValid = isValidJSONString(inputData);
             if (!isValid) {
                 alert("Please check the JSON input is not valid!")
-            }
-            else {
+            } else {
                 generateDefaultMessageForTable("#tableHeader");
                 var outputData = generateTable("#tableContainer", inputData);
                 // document.getElementById("tableContainer").innerHTML=outputData;
@@ -206,15 +203,24 @@
             var inputData = editor.getValue();
             var isValid = isValidJSONString(inputData);
             if (!isValid) {
-                alert("Please check the JSON input is not valid!")
-            }
-            else {
+                alert("Please check the JSON input is not valid!");
+            } else {
                 generateHeaderMessageForTable("#tableHeader");
                 var outputData = generateTable("#tableContainer", inputData);
 
+                //animate to the desired location
+                animateToTable();
                 // document.getElementById("tableContainer").innerHTML=outputData;
             }
         }
+        
+        function animateToTable() {
+            //On success table creation - scroll to the table
+            $('html, body').animate({
+                scrollTop: $("#tableContainer").offset().top
+            }, 1000);
+        }
+
         // Method to generate the header for the JSON Table
         function generateHeaderMessageForTable(destinationSelector) {
             var checkIfClassExists = document.getElementsByClassName('headerMessageClass');
@@ -227,7 +233,8 @@
                 }
                 var el = document.createElement("h4");
                 el.className = "headerMessageClass";
-                var elText = document.createTextNode("Success! Below is the Tabular Representation for your JSON object!")
+                var elText = document.createTextNode(
+                    "Success! Below is the Tabular Representation for your JSON object!")
                 el.appendChild(elText);
                 document.getElementById(destinationSelector.slice(1)).appendChild(el);
             }
@@ -245,7 +252,9 @@
                 el.appendChild(elText);
                 var br = document.createElement("br");
                 el.appendChild(br);
-                var elText2 = document.createTextNode("(To view tabular representation for your JSON reponse, paste it in the left editor and click on 'JSON to Table')");
+                var elText2 = document.createTextNode(
+                    "(To view tabular representation for your JSON reponse, paste it in the left editor and click on 'JSON to Table')"
+                );
                 el.appendChild(elText2);
                 document.getElementById(destinationSelector.slice(1)).appendChild(el);
             }
@@ -258,8 +267,7 @@
             var isValid = isValidJSONString(inputData);
             if (!isValid) {
                 alert("Please check the JSON input is not valid!")
-            }
-            else {
+            } else {
                 var outputData = getJSONSchema(inputData);
                 var editor = ace.edit("outputEditor");
                 editor.setValue(outputData, 1);
@@ -267,6 +275,7 @@
                 console.log("You have made it!");
             }
         }
+
         function generatePrettyJSON() {
             console.log("Calling external function FROM client.");
             var editor = ace.edit("inputEditor");
@@ -275,8 +284,7 @@
             var isValid = isValidJSONString(inputData);
             if (!isValid) {
                 alert("Please check the JSON input is not valid!")
-            }
-            else {
+            } else {
                 var outputData = getPrettyJSON(inputData);
                 var editor = ace.edit("outputEditor");
                 editor.setValue(outputData, 1);
@@ -284,10 +292,12 @@
                 console.log("You have made it!");
             }
         }
+
         function clearInputText() {
             var editor = ace.edit('inputEditor');
             editor.setValue("");
         }
+
         function copyToClipboard() {
             var editor = ace.edit('outputEditor');
             $("button[name='copyButton']").click(function () {
@@ -300,6 +310,7 @@
                 copyTextToClipboard(txt);
             });
         }
+
         function copyTextToClipboard(text) {
             var textArea = document.createElement("textarea");
             textArea.style.position = 'fixed';
@@ -318,6 +329,7 @@
             document.execCommand('copy');
             document.body.removeChild(textArea);
         }
+
         function isValidJSONString(input) {
             try {
                 JSON.parse(input);
@@ -326,7 +338,6 @@
             }
             return true;
         }
-
     </script>
     <script language="javascript">
         var openFileEvent = function (event) {
