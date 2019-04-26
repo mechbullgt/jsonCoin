@@ -64,10 +64,10 @@
         <div class="col-lg-5" style="align-content: center">
             <div id="inputEditor"></div>
             <div id="editor-statusBar" class="statusbar"></div>
-            <div style="margin-top:10px">
+            <!-- <div style="margin-top:10px">
                 <button type="button" class="btn btn-primary btn-sm" onclick="javascript:clearInputText()">Clear
                     Text</button>
-            </div>
+            </div> -->
         </div>
         <div class="col-lg-1 singleColumn">
             <div class="actionButton" id="buttonForAction">
@@ -102,24 +102,23 @@
         <div class="col-lg-6">
             <div id="outputEditor"></div>
             <div id="outPutEditor-statusBar" class="statusbar"></div>
-            <div style="margin: 10px 0 15px 0">
+            <!-- <div style="margin: 10px 0 15px 0">
                 <button class="btn btn-primary btn-md" data-toggle="tooltip" name="copyButton"
                     title="Click to see MAGIC!" onclick="copyToClipboard()">Copy
                     to Clipboard!</button>
-            </div>
+            </div> -->
             <!-- </div> -->
         </div>
     </div>
     <div id="tableHeader"></div>
-    <div class="tableContainer" id="tableContainer" style="margin: 0 0 25px 25px"></div>
+    <div class="tableContainer" id="tableContainer" style="display: flex; align-items: center;"></div>
     </div>
     <div class="footer">
         <p>Made with <span class="glyphicon glyphicon-heart-empty"></span>.js by <span><a
-                    href="https://github.com/mechbullgt">mechbullgt</a></span> & <span><a
-                    href="https://github.com/mechbullgt/jsonCoin/graphs/contributors">friends!</a></span></p>
+                    href="https://github.com/mechbullgt">mechbullgt</a></span></p>
     </div>
     <script language="javascript">
-        var editorTheme = "ace/theme/vibrant_ink";
+        var editorTheme = "ace/theme/tomorrow_night_blue";
 
         function loadInputEditor() {
             var editor = ace.edit("inputEditor");
